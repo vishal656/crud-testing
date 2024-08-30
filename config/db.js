@@ -1,7 +1,8 @@
 let mongoose = require('mongoose');
-
+let dotenv = require('dotenv');
+dotenv.config();
 async function db(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/crudTesting").then(()=>{
+    await mongoose.connect(process.env.MONGO_URI).then(()=>{
         console.log('db connection established');
     }).catch(err => console.log(err));
 }
